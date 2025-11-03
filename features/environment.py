@@ -1,7 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from app.application import Application
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 
 def browser_init(context):
