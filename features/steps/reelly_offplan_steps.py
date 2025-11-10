@@ -8,7 +8,7 @@ def open_main_page(context):
 
 @given("Log in to Reelly account")
 def login(context):
-    context.app.login_page.complete_login("YOUR_EMAIL", "YOUR_PASSWORD")
+    context.app.login_page.complete_login("bjin304@gmail.com", "Eogksgkdrhd1@")
 
 @when('Click on "Off-plan" in left side menu')
 def click_off_plan(context):

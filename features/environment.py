@@ -4,28 +4,32 @@ from app.application import Application
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
 
 def browser_init(context):
+
     username = os.getenv("BROWSERSTACK_USERNAME", "")
     access_key = os.getenv("BROWSERSTACK_ACCESS_KEY", "")
 
+
     options = webdriver.ChromeOptions()
     options.browser_version = "latest"
-    options.platform_name = "Windows 10"
+
 
     bstack_options = {
-        "os": "Windows",
-        "osVersion": "10",
-        "projectName": "Soft.reelly Off-plan Filter",
-        "buildName": "BrowserStack Internship Build - Windows 10",
-        "sessionName": "Verify Off-plan filtering on Reelly",
+        "deviceName": "iPhone 15 Pro",     #change to Samsung, Pixel, etc. if you want
+        "osVersion": "17",
+        "realMobile": "true",
+        "projectName": "Soft.reelly Mobile Web",
+        "buildName": "BrowserStack Internship Build - iPhone",
+        "sessionName": "Verify Reelly Off-plan Filter on Mobile",
         "debug": "true",
         "networkLogs": "true",
-        "consoleLogs": "info",
-        "local": "false"
+        "consoleLogs": "info"
     }
+
     options.set_capability("bstack:options", bstack_options)
 
     context.driver = webdriver.Remote(
@@ -35,7 +39,8 @@ def browser_init(context):
 
     context.driver.implicitly_wait(4)
     context.app = Application(context.driver)
-    print("✅ Running tests on BrowserStack (Live Mode Enabled)")
+
+    print("✅ Running tests on BrowserStack (MOBILE mode - iPhone 15 Pro)")
 
 
 def before_scenario(context, scenario):
